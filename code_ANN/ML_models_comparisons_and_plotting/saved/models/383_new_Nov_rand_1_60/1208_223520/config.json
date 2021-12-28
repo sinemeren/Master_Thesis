@@ -1,0 +1,55 @@
+{
+    "name": "383_new_Nov_rand_1_60",
+    "n_gpu": 1,
+    "arch": {
+        "type": "NNMultiLayerLeakyRELU",
+        "args": {
+            "input_size": 4,
+            "output_size": 2,
+            "hidden_size_1": 3,
+            "hidden_size_2": 3
+        }
+    },
+    "data_loader": {
+        "type": "ProcessParamDataLoader",
+        "args": {
+            "data_dir": "data/",
+            "file_name": "dataWithDepthAndDiameter_TRAININGplusVALIDATON_new_Nov60.xls",
+            "batch_size": 76,
+            "shuffle": true,
+            "validation_split": 0.0,
+            "num_workers": 4,
+            "k_fold": 0,
+            "fold_idx": 0,
+            "norm_range_min": 0,
+            "norm_range_max": 1.0
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "amsgrad": true
+        }
+    },
+    "loss": "mse_loss",
+    "metrics": [
+        "MSE",
+        "MAE"
+    ],
+    "lr_scheduler": {
+        "type": "",
+        "args": {}
+    },
+    "trainer": {
+        "epochs": 10000000,
+        "save_dir": "saved/",
+        "save_period": 10000,
+        "save_only_best_model": true,
+        "verbosity": 1,
+        "monitor": "min val_loss",
+        "early_stop": 700000000,
+        "tensorboard": true
+    }
+}

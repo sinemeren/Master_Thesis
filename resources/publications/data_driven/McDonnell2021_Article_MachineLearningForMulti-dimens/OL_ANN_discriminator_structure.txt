@@ -1,0 +1,8 @@
+d1 = tf.layers.dense(Vector,units=neuronsPerLayer,name='dense1')
+d1 = tf.layers.dropout(d1,name='drop1',rate=dropRate)
+d1 = tf.layers.batch_normalization(d1)
+d1 = tf.layers.dense(d1,units=neuronsPerLayer,name='dense2')
+d1 = tf.layers.dropout(d1,name='drop2',rate=dropRate)
+d1 = tf.layers.batch_normalization(d1)
+d1 = tf.layers.dense(d1,units=neuronsPerLayer)
+output = tf.layers.dense(d1,units=2,name='output',activation=tf.nn.relu)
